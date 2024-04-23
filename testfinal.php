@@ -12,7 +12,7 @@ if (!$conn) {
  
 echo "Connexion réussie";
  
-$sql = "INSERT INTO rôle (ID_rôle, Nom_rôle) VALUES (001,'Administrateur')";
+$sql = "INSERT INTO rôle (ID_rôle, Nom_rôle) VALUES (003,'Commerciale')";
 if (mysqli_query($conn, $sql)) {
       echo "Nouveau enregistrement créé avec succès";
 } else {
