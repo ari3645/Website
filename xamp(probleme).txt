@@ -1,0 +1,5 @@
+netstat -ano | find "3306"
+
+Stop-Process -Id 11300 -Force
+
+sinon gestionnaire de tache stopper le port 

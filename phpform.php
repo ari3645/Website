@@ -29,13 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role = $sth->fetchColumn(4);
         if($count == 1 and $role == '1'){
             echo 'Connexion réussie admin';
-           // header("Location:admin.html");
+           header("Location:admin.html");
         }else if ($count == 1 and $role == '2'){
-            echo 'Connexion réussie user';
-            //header("Location:user.html");
+            echo 'Connexion réussie comptable';
+            header("Location:comptable.html");
         }else if ($count == 1 and $role == '3'){
             echo 'Connexion réussie commercial';
-           // header("Location:commercial.html");
+           header("Location:commercial.html");
         }else{
             echo 'Mauvais identifiants';
             // Faire en sorte qu'on revienne sur la page HTML avec un message d'erreur   
