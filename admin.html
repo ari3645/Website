@@ -15,8 +15,6 @@
           <a class="navbar-brand" href="#">
             <img src="images/logo.png" alt="Bootstrap" class="img-nav">
           </a>
-
-
         </div>
         <center><p><h4>Vitalab New Gen</h4></p></center>
         <div class="dropdown">
@@ -48,15 +46,27 @@
           </div>
 
         </div>
+        <?php
+        // Récupérer le message de la redirection
+        $message = isset($_GET['message']) ? $_GET['message'] : '';
+
+        // Afficher le message
+        echo $message;
+        ?>
+        
         <div class="top-left" style="height: 50%; width: 50%;">
-          <h3><center>Ajouter un utilisateur</center></h3>
-          <p>Identifiant : <input type="text"> </p>
+          <form method="POST" action="admin_p_user.php">
+            <h3><center>Ajouter un utilisateur</center></h3>
+            <p>Identifiant : <input type="text" name="nom_utilisateur"> </p>
 
-          <p>Mot de passe : <input type="text"> </p>
+            <p>Mot de passe : <input type="text" name="mot_de_passe"> </p>
 
-          <p>Statut : <input type="text"> </p>
-          <center><a href="" class="bn1" >Ajouter</a></center>
+            <p>Mail : <input type="text" name="mail"></p>
 
+            <p>Statut : <input type="text" name="role">1-Admin | 2-Comptable | 3-Commerciale </p>
+            <!-- <center><a type="submit" class="bn1" >Ajouter</a></center> -->
+            <center><input type=submit value="Ajouter" class="bn1"></center>
+          </form>
         </div>
         <div class="bottom-left" style="height: 50%; width: 50%;">
           <h3><center>Liste des utilisateurs</center></h3>

@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST["id"];
     $password = $_POST["password"];
     
+    
         
     // Exemple d'affichage des données traitées
     echo "id: " . $login. "<br>";
