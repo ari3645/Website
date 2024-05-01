@@ -1,35 +1,3 @@
-<?php
-session_start();
-
-// Vérifier si l'utilisateur est déjà connecté
-if(isset($_SESSION['id_utilisateur']) === false){
-    header("Location:index.php");
-    exit;
-}
-
-// Démarrer ou reprendre la session
-
-
-// Fonction PHP pour la déconnexion côté serveur
-function logoutServer() {
-    // Détruit toutes les données de session
-    session_destroy();
-    // Redirection vers la page de connexion
-    header("Location: index.php");
-    exit;
-}
-
-// Si le formulaire de déconnexion est soumis
-if(isset($_POST['logout'])) {
-    logoutServer();
-}
-
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="FR">
 <head>
@@ -52,23 +20,19 @@ if(isset($_POST['logout'])) {
         </div>
         <center><p><h4>Vitalab New Gen</h4></p></center>
         <div class="dropdown">
-        <form id="logoutForm" method="post" style="display: none;">
-        <input type="hidden" name="logout" value="1">
-    </form>
+          <button href="" class="btn41-43 btn-42" onclick="logoutcp()">
+            Déconnexion
+          </button>
 
-    <button class="btn41-43 btn-42" onclick="logoutcp()">Déconnexion</button>
-
-    <script>
-        // Fonction JavaScript pour la déconnexion côté client
-        function logoutcp() {
-            // Soumettre le formulaire de déconnexion
-            document.getElementById('logoutForm').submit();
-        }
-    </script>
+          <script>
+            function logoutcp() {
+              window.location.href = "index.php";
+            }
+            </script>
         </div>
     </nav>
     <nav class="container2">
-        <div class="right" >
+        <div class="middle" >
           <h3><center>Liste notes de frais</center></h3>
           <?php
                 // Informations d'identification
@@ -78,9 +42,9 @@ if(isset($_POST['logout'])) {
                 $pass = "Ari69.008";                    
                 
                 // On récupère l'id de l'utilisateur connecté
-               
+                session_start();
                 $id_utilisateur_connecte = $_SESSION['id_utilisateur'];
-                echo $_SESSION['id_utilisateur'];
+      
                 try {
                     // Connexion à la base de données
                     $dsn = "mysql:host=$serveur;dbname=$dbname";
@@ -119,7 +83,7 @@ if(isset($_POST['logout'])) {
 
                   // Afficher les notes de frais
                   echo $liste_notes_html;
-                  
+
                 //Gestion des erreurs
                 } catch (PDOException $e) {echo "Erreur : " . $e->getMessage();}
 
@@ -128,6 +92,10 @@ if(isset($_POST['logout'])) {
               ?>
         </div>
 
+        <div id="details_note_frais">
+          <h3><center>Informations note de frais</center></h3>
+          <p>Veuillez choisir une note de frais</p>
+        </div>  
     </nav>
 </body>
 </html>
